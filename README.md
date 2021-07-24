@@ -4,8 +4,8 @@ Drag Test Server
 
 ## Minimal Requirements
 
-* [Node.js](https://nodejs.org/)
-* [yarn](https://yarnpkg.com/)
+- [Node.js](https://nodejs.org/)
+- [yarn](https://yarnpkg.com/)
 
 ## Setup
 
@@ -20,6 +20,10 @@ Build the source:
 
 ## Execution
 
+    # copy the configuration file from the template and edit accordingly
+    cp test-config.json.template test-config.json
+
+    export DRAG_TEST_CONFIG=test-config.json
     yarn run main
 
 ## git hooks

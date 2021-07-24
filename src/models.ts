@@ -1,10 +1,5 @@
 import { Sequelize, Model, DataTypes, Optional } from "sequelize";
 
-const sequelize = new Sequelize({
-  dialect: "sqlite",
-  storage: "vertices.db",
-});
-
 interface VertexAttributes {
   id: string;
   position_x: number;
@@ -23,28 +18,32 @@ export class Vertex extends Model<VertexAttributes, VertexCreationAttributes> im
   public readonly updatedAt!: Date;
 }
 
-Vertex.init(
-  {
-    id: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      primaryKey: true,
+export const init = async (databasePath: string): Promise<void> => {
+  const sequelize = new Sequelize({
+    dialect: "sqlite",
+    storage: databasePath,
+  });
+  Vertex.init(
+    {
+      id: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        primaryKey: true,
+      },
+      position_x: {
+        type: DataTypes.NUMBER,
+        allowNull: false,
+      },
+      position_y: {
+        type: DataTypes.NUMBER,
+        allowNull: false,
+      },
     },
-    position_x: {
-      type: DataTypes.NUMBER,
-      allowNull: false,
-    },
-    position_y: {
-      type: DataTypes.NUMBER,
-      allowNull: false,
-    },
-  },
-  {
-    sequelize,
-    tableName: "vertex",
-  }
-);
+    {
+      sequelize,
+      tableName: "vertex",
+    }
+  );
 
-export const init = async (): Promise<Vertex> => {
-  return await Vertex.sync({ force: true });
+  await Vertex.sync();
 };

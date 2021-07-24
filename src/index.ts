@@ -1,13 +1,18 @@
-import { init, Vertex } from "./models";
+import { env } from "process";
+import { load as loadConfig } from "./config";
+import { init } from "./models";
+import { runServer } from "./server";
 
 (async () => {
-  await init();
+  const configPath = env["DRAG_TEST_CONFIG"];
+  if (!configPath) {
+    throw new Error(`Unable to load config: ${configPath}`);
+  }
+  const config = loadConfig(configPath);
 
-  await Vertex.create({
-    id: "3_1",
-    position_x: 1,
-    position_y: 2,
-  });
+  await init(config.databasePath);
 
-  console.log("Vertex was saved to the database");
+  console.log("Starting server...");
+
+  runServer(config);
 })();

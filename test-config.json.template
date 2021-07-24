@@ -1,0 +1,5 @@
+{
+    "webappAssetsPath": "/Users/bijanv/Development/sandbox/drag_test/dist",
+    "databasePath": "/Users/bijanv/Development/sandbox/drag_test_server/vertices.db",
+    "port": 8080
+}
