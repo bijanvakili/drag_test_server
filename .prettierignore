@@ -1,5 +1,6 @@
 .prettierignore
 .yarn/
+yarn.lock
 .pnp.js
 dist/
 tmp/
