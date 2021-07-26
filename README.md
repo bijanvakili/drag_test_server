@@ -14,6 +14,10 @@ Install all the required Javascript packages.
     yarn set version berry
     yarn install
 
+Set up for VSCode
+
+    yarn dlx @yarnpkg/sdks vscode
+
 Build the source:
 
     yarn run build

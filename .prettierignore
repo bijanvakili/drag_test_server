@@ -6,3 +6,4 @@ dist/
 tmp/
 *.sh
 test-config.json
+test-config.json.template

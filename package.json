@@ -37,7 +37,7 @@
     "lint-md": "markdownlint",
     "lint-md-all": "markdownlint *.md docs/",
     "lint-prettier": "prettier --check --loglevel warn",
-    "lint-prettier-all": "prettier --check .",
+    "lint-prettier-all": "prettier --check src/",
     "lint-ts": "eslint --ext .ts"
   }
 }
